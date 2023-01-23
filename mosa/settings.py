@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import smtplib
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -68,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'category.context_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -135,3 +137,22 @@ STATIC_URL = '/static/'
 #Media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+# SMTP configuration
+EMAIL_HOST = 'smtp.gmail.com'
+email_port = 587
+EMAIL_HOST_USER = 'newmbis@gmail.com'
+EMAIL_HOST_PASSWORD = 'cezfnzmexfvoxjzh'
+EMAIL_USE_TLS = True
+
+
+# smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
+# smtpserver.ehlo()
+# smtpserver.starttls()
+# smtpserver.ehlo()
+# smtpserver.login('jesking2021@gmail.com', '76765767Mj')
